@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import InputField from "components/common/inputFields";
 import Button from "components/common/button";
 import Navigation from "components/common/navBar";
-import  createUser from "actions/userActions";
-import { validate } from "helpers/validate"
+import { userActions } from "actions/userActions";
+import { validate } from "helpers/validate";
 import "./index.scss";
 
 class Signup extends Component {
@@ -21,16 +21,10 @@ class Signup extends Component {
     },
   };
 
-  componentDidMount() {
-    if(localStorage.getItem('auth')){
-        this.props.history.push('/dashboard');
-    }
-}
-
   handleInputChange = (event) => {
     const { name, value } = event.target;
     let { formErrors } = this.state;
-    validate.validateRegistration(name, formErrors, value)
+    validate.validateRegistration(name, formErrors, value);
     this.setState({ ...this.state, formErrors, [name]: value });
   };
 
@@ -39,15 +33,15 @@ class Signup extends Component {
     const { userName, email, password } = this.state;
     const { dispatch } = this.props;
     if (userName && email && password) {
-      dispatch(createUser(userName, email, password));
+      dispatch(userActions.createUser(userName, email, password));
     }
-    this.props.history.push('/signup');
+    this.props.history.push("/login");
   };
-  
+
   render() {
     const { userName, email, password, formErrors } = this.state;
     const disableSubmitButton =
-    userName === '' || email === '' || password === '';
+      userName === "" || email === "" || password === "";
     return (
       <Fragment>
         <Navigation />
@@ -68,11 +62,9 @@ class Signup extends Component {
                 value={userName}
                 onChange={this.handleInputChange}
               />
-               {formErrors.userNameError.length > 0 && (
-                    <div
-                    className="input-error"
-                      >{`* ${formErrors.userNameError}`}</div>
-                  )}
+              {formErrors.userNameError.length > 0 && (
+                <div className="input-error">{`* ${formErrors.userNameError}`}</div>
+              )}
             </div>
 
             <div className="form-group">
@@ -87,11 +79,9 @@ class Signup extends Component {
                 value={email}
                 onChange={this.handleInputChange}
               />
-               {formErrors.emailError.length > 0 && (
-                    <div
-                    className="input-error"
-                      >{`* ${formErrors.emailError}`}</div>
-                  )}
+              {formErrors.emailError.length > 0 && (
+                <div className="input-error">{`* ${formErrors.emailError}`}</div>
+              )}
             </div>
             <div className="form-group">
               <InputField
@@ -104,11 +94,9 @@ class Signup extends Component {
                 value={password}
                 onChange={this.handleInputChange}
               />
-               {formErrors.passwordError.length > 0 && (
-                    <div
-                    className="input-error"
-                      >{`* ${formErrors.passwordError}`}</div>
-                  )}
+              {formErrors.passwordError.length > 0 && (
+                <div className="input-error">{`* ${formErrors.passwordError}`}</div>
+              )}
             </div>
 
             <Button

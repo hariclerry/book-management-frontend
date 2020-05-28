@@ -6,7 +6,7 @@ import "../user/home.scss";
 const Navigation = (props) => {
   return (
     <Fragment>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
         <h3 className="masthead-brand">BMA</h3>
         <button
           class="navbar-toggler"

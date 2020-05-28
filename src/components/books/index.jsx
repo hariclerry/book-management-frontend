@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from "react";
+import { Route, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 // import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import Button from "components/common/button";
@@ -14,6 +16,7 @@ import "./index.scss";
 // import './home.scss';
 
 const Dashboard = (props) => {
+  console.log(props, 'propssssssss')
   return (
     <Fragment>
       <Navigation />
@@ -21,7 +24,7 @@ const Dashboard = (props) => {
       {/* <EditBookModal />
       <DeleteBookModal/> */}
       <div className="book-lists">
-        <h3>Welcome user, start adding books!</h3>
+        <h4>Welcome {props.userData.userName}, start adding books!</h4>
         <button
           type="button"
           class="btn btn-primary"
@@ -35,5 +38,11 @@ const Dashboard = (props) => {
     </Fragment>
   );
 };
+const mapStateToProps = (state) => ({
+  userData
+  : state.authentication.userData,
+});
 
-export default Dashboard;
+export default withRouter(
+  connect(mapStateToProps, null, null, { pure: false })(Dashboard)
+);
