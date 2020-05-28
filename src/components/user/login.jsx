@@ -5,28 +5,17 @@ import InputField from "components/common/inputFields";
 import Button from "components/common/button";
 import Navigation from "components/common/navBar";
 import "./index.scss";
-// import { API } from 'httpServices/authService';
-// import './home.scss';
 
-const Signup = (props) => {
+const Login = (props) => {
   return (
     <Fragment>
       <Navigation />
       <div className="form-main">
         <form className="flex-form">
-          <h2 className="form-group">Signup</h2>
+          <h2 className="form-group">Login</h2>
           <p className="form-group">
-            Start your journey of enjoyment with us by signing up today
+            Start your journey of enjoyment with us by signing in
           </p>
-          <div className="form-group">
-            <InputField
-              htmlFor="exampleInputText"
-              label="Username"
-              type="text"
-              id="exampleInputText"
-              className="form-control"
-            />
-          </div>
 
           <div className="form-group">
             <InputField
@@ -49,7 +38,7 @@ const Signup = (props) => {
           </div>
 
           <Button
-            text="Signup"
+            text="Login"
             type="submit"
             value="Submit"
             className="btn btn-primary"
@@ -60,4 +49,4 @@ const Signup = (props) => {
   );
 };
 
-export default Signup;
+export default Login;

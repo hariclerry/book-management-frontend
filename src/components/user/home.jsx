@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 import Navigation from "../common/navBar";
 import "./home.scss";
@@ -9,20 +9,19 @@ const Home = (props) => {
     <Fragment>
       <div className="text-center main-cover">
         <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header className="masthead mb-auto">
+          <header className="masthead mb-auto">
             <div className="inner">
               <h3 className="masthead-brand">BMA</h3>
               <nav className="nav nav-masthead justify-content-center">
-              <NavLink exact className="nav-link active" to="/">
-      {/* <span class="sr-only">(current)</span> */}
-            Home
-          </NavLink>
-          <NavLink className="nav-link" to="/signup">
-            Signup
-          </NavLink>
-          <NavLink className="nav-link" to="/login">
-            Home
-          </NavLink>
+                <NavLink exact className="nav-link active" to="/">
+                  Home
+                </NavLink>
+                <NavLink className="nav-link" to="/signup">
+                  Signup
+                </NavLink>
+                <NavLink className="nav-link" to="/login">
+                  Home
+                </NavLink>
               </nav>
             </div>
           </header>
