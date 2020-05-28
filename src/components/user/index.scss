@@ -1,0 +1,17 @@
+.form-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.flex-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-group {
+    width: 30vw;
+  }
