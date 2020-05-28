@@ -8,6 +8,7 @@ const InputField = ({
   onChange,
   className,
   id,
+  name
 }) => {
   return (
     <Fragment>
@@ -20,6 +21,7 @@ const InputField = ({
         value={value}
         onChange={onChange}
         className={className}
+        name={name}
         required
       />
     </Fragment>

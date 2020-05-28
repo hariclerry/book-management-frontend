@@ -1,14 +1,14 @@
-import * as actionTypes from '../actions/actionTypes';
+import { userConstants } from '../actions/actionTypes';
 
-export default (state = [], action) => {
-    switch (action.type){
-      
-      case actionTypes.CREATE_NEW_CONTACT:
-      return [
-        ...state,
-        Object.assign({}, action.contact)
-      ];
-      default:
-            return state;
-    }
-  };
+export default function registration(state = {}, action) {
+  switch (action.type) {
+    case userConstants.REGISTER_REQUEST:
+      return { registering: true };
+    case userConstants.REGISTER_SUCCESS:
+      return {};
+    case userConstants.REGISTER_FAILURE:
+      return {};
+    default:
+      return state
+  }
+}

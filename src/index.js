@@ -9,11 +9,10 @@ import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import App from "./App";
 
-const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={configureStore}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

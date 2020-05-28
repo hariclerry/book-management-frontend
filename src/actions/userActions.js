@@ -1,17 +1,28 @@
-import * as actionTypes from './actionTypes';
 
-// export const createContact = (contact) => {
-//     return {
-//       type: actionTypes.CREATE_NEW_CONTACT,
-//       contact: contact
-//     }
-//   };
+import { userConstants } from '../actions/actionTypes';
+import { userService } from '../services/userServices';
 
-  export const createContact = () => dispatch => {
-    dispatch({
-        type: actionTypes.CREATE_NEW_CONTACT,
-      contact: 'contact'
-    //  type: 'SIMPLE_ACTION',
-    //  payload: 'result_of_simple_action'
-    })
-   }
+function createUser(userName, email, password){
+  console.log('calleddaction')
+  return dispatch => {
+     let apiEndpoint = 'user';
+     let payload = {
+         userName: userName,
+         email: email,
+         password: password
+     }       
+     userService.post(apiEndpoint, payload)
+     .then((response)=>{
+      dispatch(creatUserDetails())
+      // history.push('/home');
+     })
+  };
+}
+
+export default createUser;
+
+export function creatUserDetails(){
+  return{
+      type: userConstants.REGISTER_SUCCESS
+  }
+}
