@@ -3,7 +3,7 @@ import { userService } from "../services/userServices";
 
 function createUser(userName, email, password) {
   return (dispatch) => {
-    let apiEndpoint = "user";
+    let apiEndpoint = "books";
     let payload = {
       userName: userName,
       email: email,

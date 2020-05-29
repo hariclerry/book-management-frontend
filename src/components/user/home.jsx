@@ -1,7 +1,6 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 
-import Navigation from "../common/navBar";
 import "./home.scss";
 
 const Home = (props) => {
@@ -20,7 +19,7 @@ const Home = (props) => {
                   Signup
                 </NavLink>
                 <NavLink className="nav-link" to="/login">
-                  Home
+                  Login
                 </NavLink>
               </nav>
             </div>
@@ -34,9 +33,9 @@ const Home = (props) => {
               books lists. Click the link below to get started.
             </p>
             <p className="lead">
-              <a href="#" className="btn btn-lg btn-secondary">
+              <NavLink className="btn btn-lg btn-secondary" to="/signup">
                 Get Started
-              </a>
+              </NavLink>
             </p>
           </main>
 

@@ -10,3 +10,13 @@ export const userConstants = {
 
     LOGOUT: 'USERS_LOGOUT',   
 };
+
+export const bookConstants = {
+    REGISTER_BOOK_SUCCESS: 'BOOK_REGISTER_SUCCESS',
+
+    EDIT_BOOK_SUCCESS: 'BOOK_EDIT_SUCCESS',
+
+    FETCH_BOOK_SUCCESS: 'BOOK_FETCH_SUCCESS',
+    
+    DELETE_BOOK_SUCCESS: 'BOOK_DELETE_SUCCESS',
+};

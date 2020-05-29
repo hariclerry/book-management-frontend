@@ -16,6 +16,24 @@ function validateRegistration(name, formErrors, value) {
   }
 }
 
+function validateBook(name, formErrors, value) {
+  switch (name) {
+    case "title":
+      formErrors.titleError =
+        value.length < 5 ? "Title must be atleast 5 characters long" : "";
+      break;
+    case "isbn":
+      formErrors.isbnError = value.length < 5 ? "Isbn must be atleast 5 characters long" : "";
+      break;
+    case "author":
+      formErrors.authorError =
+        value.length < 5 ? "Author must be atleast 5 characters long" : "";
+      break;
+    default:
+      break;
+  }
+}
 export const validate = {
   validateRegistration,
+  validateBook
 };

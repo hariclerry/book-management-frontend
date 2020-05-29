@@ -2,8 +2,7 @@ import jwt from 'jwt-decode'
 import { userConstants } from 'actions/actionTypes';
 
 let token = localStorage.getItem('token');
-let userData = jwt(token)
-const initialState = token ? { loggedIn: true, token, userData } : {};
+const initialState = token ? { loggedIn: true, token } : {};
 
 export default function authentication(state = initialState, action) {
   switch (action.type) {
@@ -15,7 +14,7 @@ export default function authentication(state = initialState, action) {
     case userConstants.LOGIN_SUCCESS:
       return {
         loggedIn: true,
-        user: action.userData
+        user: action.user
       };
     case userConstants.LOGIN_FAILURE:
       return {};

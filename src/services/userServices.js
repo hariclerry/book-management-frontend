@@ -9,7 +9,7 @@ export const userService = {
 };
 function get(apiEndpoint) {
   return axios
-    .get(config.baseUrl + apiEndpoint)
+    .get(config.baseUrl + apiEndpoint, getOptions())
     .then((response) => {
       return response;
     })
@@ -19,7 +19,7 @@ function get(apiEndpoint) {
 }
 function post(apiEndpoint, payload) {
   return axios
-    .post(config.baseUrl + apiEndpoint, payload)
+    .post(config.baseUrl + apiEndpoint, payload, getOptions())
     .then((response) => {
       return response;
     })
@@ -29,7 +29,7 @@ function post(apiEndpoint, payload) {
 }
 function put(apiEndpoint, payload) {
   return axios
-    .put(config.baseUrl + apiEndpoint, payload)
+    .put(config.baseUrl + apiEndpoint, payload, getOptions())
     .then((response) => {
       return response;
     })
@@ -39,11 +39,19 @@ function put(apiEndpoint, payload) {
 }
 function deleteDetail(apiEndpoint) {
   return axios
-    .delete(config.baseUrl + apiEndpoint)
+    .delete(config.baseUrl + apiEndpoint, getOptions())
     .then((response) => {
       return response;
     })
     .catch((err) => {
       console.log(err);
     });
+}
+
+function getOptions(){
+  let options = {};
+  if(localStorage.getItem('token')){
+      options.headers = { 'x-auth-token': localStorage.getItem('token') };
+  }
+  return options;
 }

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-// import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import InputField from "components/common/inputFields";
 import Button from "components/common/button";
@@ -47,10 +47,7 @@ class Signup extends Component {
         <Navigation />
         <div className="form-main">
           <form className="flex-form" onSubmit={this.handleRegistration}>
-            <h2 className="form-group">Signup</h2>
-            <p className="form-group">
-              Start your journey of enjoyment with us by signing up today
-            </p>
+            <h2 className="form-group account-text">Create Account</h2>
             <div className="form-group">
               <InputField
                 htmlFor="exampleInputText"
@@ -104,17 +101,24 @@ class Signup extends Component {
               type="submit"
               value="Submit"
               disabled={disableSubmitButton}
-              className="btn btn-primary"
+              className="btn btn-primary size-button"
             />
+            <p className="lead-account">
+              Have already an account? {''}
+              <NavLink className="link-account" to="/login">
+               Login Here 
+              </NavLink>
+            </p>
           </form>
         </div>
+        <footer className="footer-text">
+              <p>Copyright &copy; 2020. Harriet</p>
+          </footer>
       </Fragment>
     );
   }
 }
-// Register.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+
 function mapStateToProps(state) {
   return state;
 }

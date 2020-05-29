@@ -7,38 +7,27 @@ import "./index.scss";
 // import { API } from 'httpServices/authService';
 // import './home.scss';
 
-const DeleteBookModal = (props) => {
+const DeleteBookModal = ({
+  localStateBooks,
+  deleteBook
+}) => {
   return (
     <Fragment>
-<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete Book</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete {localStateBooks.title}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <p>Are you sure you want to delete this Book?</p>
+        Are you sure you want to delete {localStateBooks.title}?
       </div>
       <div class="modal-footer">
-      <Button
-            text="Cancel"
-            type="button"
-            value="Submit"
-            className="btn btn-secondary"
-            data-dismiss="modal"
-          />
-
-<Button
-            text="Delete Book"
-            type="button"
-            value="Submit"
-            className="btn btn-danger"
-          />
-        {/* <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button> */}
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-danger" data-dismiss="modal" onClick={deleteBook}>Delete</button>
       </div>
     </div>
   </div>

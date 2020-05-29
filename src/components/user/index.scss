@@ -1,7 +1,9 @@
 .form-main {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 130px auto 0 auto;
   padding: 30px;
+  background-color: rgb(231, 227, 227);
+  border-radius: 5px;
 }
 
 .flex-form {
@@ -19,4 +21,35 @@
 .input-error {
   color: red;
   font-size: 12px;
+}
+
+.size-button.btn {
+  width: 30vw;
+}
+
+.account-text {
+  color: rgb(46, 45, 45);
+  font-size: 1.8em;
+  font-family: arial;
+  font-weight: 800;
+  text-align: center;
+}
+.lead-account {
+  margin-top: 10px;
+  color: #000000;
+}
+
+.lead-account a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.footer-text {
+  color: rgb(46, 45, 45);
+  font-size: 1.2em;
+  font-family: arial;
+  font-weight: 200;
+  text-align: center;
+  padding-top: 100px;
 }

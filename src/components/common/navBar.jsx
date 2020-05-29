@@ -7,7 +7,7 @@ const Navigation = (props) => {
   return (
     <Fragment>
       <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <h3 className="masthead-brand">BMA</h3>
+        <h3 className="masthead-brand logo-size">BMA</h3>
         <button
           class="navbar-toggler"
           type="button"
