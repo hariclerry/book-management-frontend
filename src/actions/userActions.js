@@ -1,5 +1,8 @@
+import { NotificationManager } from 'react-notifications';
+
 import { userConstants } from "../actions/actionTypes";
 import { userService } from "../services/userServices";
+import { history } from '../helpers';
 
 function createUser(userName, email, password) {
   return (dispatch) => {
@@ -11,8 +14,10 @@ function createUser(userName, email, password) {
     };
     userService.post(apiEndpoint, payload).then((response) => {
       dispatch(creatUserDetails());
-      // history.push('/home');
-    });
+      NotificationManager.success('Registration Succesful!', 'Successful!', 2000);
+    }).catch((err)=>{
+      NotificationManager.error('User Email already exists!', 'Error!');
+  })
   };
 }
 
@@ -27,18 +32,20 @@ function loginUser(email, password) {
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
         dispatch(userDetails(response.data));
-        //  history.push('/home');
+        history.push('/dashboard')
+        NotificationManager.success('Login Succesful!', 'Successful!', 2000);
       }
-    });
+    }).catch((err)=>{
+      NotificationManager.error('Wrong Email address or password!', 'Error!');
+  })
   };
 }
 
 function logout() {
   return (dispatch) => {
-    localStorage.removeItem("auth");
     localStorage.removeItem("token");
     dispatch(logoutUser());
-    // history.push("/");
+    history.push('/')
   };
 }
 export function userDetails(user) {
@@ -49,8 +56,7 @@ export function userDetails(user) {
 }
 export function logoutUser() {
   return {
-    type: "LOGOUT_SUCCESS",
-    auth: false,
+    type: userConstants.LOGOUT,
     token: "",
   };
 }
@@ -64,4 +70,5 @@ export function creatUserDetails() {
 export const userActions = {
   createUser,
   loginUser,
+  logout
 };

@@ -1,14 +1,12 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
 import InputField from "components/common/inputFields";
-import Button from "components/common/button";
 import "./index.scss";
-import { checkPropTypes } from "prop-types";
 
 const EditBookModal = ({
   localStateBooks,
-  handleInputChange,
-  handleBookCreation,
+  onInputChange,
+  onBookSubmit,
   clearFormData,
 }) => {
   const { title, isbn, author, formErrors } = localStateBooks;
@@ -50,7 +48,7 @@ const EditBookModal = ({
                       type="text"
                       id="exampleInputText"
                       className="form-control"
-                      onChange={handleInputChange}
+                      onChange={onInputChange}
                     />
                     {formErrors.titleError.length > 0 && (
                       <div className="input-error">{`* ${formErrors.titleError}`}</div>
@@ -65,7 +63,7 @@ const EditBookModal = ({
                       type="text"
                       id="exampleInputText1"
                       className="form-control"
-                      onChange={handleInputChange}
+                      onChange={onInputChange}
                     />
                     {formErrors.isbnError.length > 0 && (
                       <div className="input-error">{`* ${formErrors.isbnError}`}</div>
@@ -81,7 +79,7 @@ const EditBookModal = ({
                       type="text"
                       id="exampleInputText2"
                       className="form-control"
-                      onChange={handleInputChange}
+                      onChange={onInputChange}
                     />
                     {formErrors.authorError.length > 0 && (
                       <div className="input-error">{`* ${formErrors.authorError}`}</div>
@@ -100,7 +98,7 @@ const EditBookModal = ({
                       type="submit"
                       class="btn btn-primary"
                       data-dismiss="modal"
-                      onClick={handleBookCreation}
+                      onClick={onBookSubmit}
                       disabled={disableSubmitButton}
                     >
                       Save changes

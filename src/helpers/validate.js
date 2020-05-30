@@ -17,13 +17,17 @@ function validateRegistration(name, formErrors, value) {
 }
 
 function validateBook(name, formErrors, value) {
+  const isbnPattern = /^[0-9]-+$/g;
   switch (name) {
     case "title":
       formErrors.titleError =
         value.length < 5 ? "Title must be atleast 5 characters long" : "";
       break;
     case "isbn":
-      formErrors.isbnError = value.length < 5 ? "Isbn must be atleast 5 characters long" : "";
+      formErrors.isbnError =
+        !isbnPattern.test(value) && value.length < 10
+          ? "Isbn must be valid & atleast 10 characters long, E.g 100-877-66"
+          : "";
       break;
     case "author":
       formErrors.authorError =
@@ -35,5 +39,5 @@ function validateBook(name, formErrors, value) {
 }
 export const validate = {
   validateRegistration,
-  validateBook
+  validateBook,
 };

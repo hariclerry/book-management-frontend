@@ -6,7 +6,8 @@
 }
 
 .card {
-  margin: 0 20px 20px 0;
+  width: 18rem;
+  margin: 0 10px 20px 0;
   align-items: center;
 }
 
@@ -15,17 +16,16 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 110px 30px 20px 30px;
-  color: rgb(104, 102, 102);
+  color: rgb(70, 68, 68);
   font-size: 0.8em;
-  // font-style: oblique;
   font-family: arial;
   font-weight: 600;
 }
 
 hr.hr-styles {
-	height: 10px;
-	border: 0;
-	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
 }
 
 .isbn-text {
@@ -51,7 +51,33 @@ hr.hr-styles {
   font-size: 1.5em;
 }
 
-.card-buttons{
+.card-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.card-buttons button {
+  margin: 15px;
+  flex-grow: 1;
+  align-self: flex-end;
+}
+.book-plus.btn {
+  font-weight: 500;
+  font-size: 1.2em;
+}
+.book-empty {
+  font-family: sans-serif;
+  color: #3d3c3c;
+  font-weight: 500;
+  font-size: 5em;
+  height: 400px;
+  opacity: 0.8;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.empty-button {
+  width: 60px;
+  height: 40px;
 }

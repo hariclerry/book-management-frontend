@@ -1,18 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Route, Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-// import {NotificationContainer, NotificationManager} from 'react-notifications';
 
-import Button from "components/common/button";
 import Navigation from "components/common/navBar";
 import AddBookModal from "components/books/addBookModal";
-// import EditBookModal from "components/books/editBookModal";
 import BookCards from "components/books/cardLists";
 import { bookActions } from "actions/bookActions";
 import { validate } from "helpers/validate";
-// import DeleteBookModal from "components/books/deleteBookModal"
-
-// import Button from "components/common/button";
+import Shelf from "../../images/bookk.jpg";
 import "./index.scss";
 
 const Dashboard = (props) => {
@@ -30,13 +25,12 @@ const Dashboard = (props) => {
   const [requestData, setRequestData] = useState(new Date());
 
   useEffect(() => {
+    const fetchAllBooks = async () => {
+      const { dispatch } = props;
+      await dispatch(bookActions.fetchBooks());
+    };
     fetchAllBooks();
   }, [requestData]);
-
-  const fetchAllBooks = () => {
-    const { dispatch } = props;
-    dispatch(bookActions.fetchBooks());
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -45,28 +39,15 @@ const Dashboard = (props) => {
     setBooks({ ...localBooksState, formErrors, [name]: value });
   };
 
-  // const handleBookCreation = (event) => {
-  //   event.preventDefault();
-  //   const { title, isbn, author } = localBooksState;
-  //   const { dispatch } = props;
-  //   if (title && isbn && author) {
-  //     dispatch(bookActions.createBook(title, isbn, author));
-  //   }
-  //   props.history.push("/dashboard");
-  // };
-
-  const handleBookCreation = (event) => {
+  const handleBookSubmit = (event) => {
     event.preventDefault();
     const { title, isbn, author, id } = localBooksState;
-    // console.log("localllllll*******", localBooksState);
     const { dispatch } = props;
     if (title && isbn && author && !id) {
       if (title && isbn && author) {
         dispatch(bookActions.createBook(title, isbn, author));
       }
-      // clearFormData();
     } else if (title && isbn && author && id) {
-      // console.log("Calledsecondedit*******");
       const id = localBooksState.id;
       const updatedDetails = {
         title: title,
@@ -76,17 +57,12 @@ const Dashboard = (props) => {
       if (title && isbn && author) {
         dispatch(bookActions.editBookInfo(id, updatedDetails));
       }
-      // clearFormData();
-      // props.history.push("/dashboard");
     }
-
     clearFormData();
-    // props.history.push("/dashboard");
-    setRequestData(new Date());
+    window.location.reload(false);
   };
 
   const editDetails = (data) => {
-    // event.preventDefault();
     setBooks({
       id: data._id,
       title: data.title,
@@ -117,42 +93,59 @@ const Dashboard = (props) => {
     const { id } = localBooksState;
     const { dispatch } = props;
     dispatch(bookActions.deleteBook(id));
-    clearFormData()
+    clearFormData();
     setRequestData(new Date());
   };
+  const { books } = props;
   return (
     <Fragment>
       <Navigation />
       <AddBookModal
-        handleBookCreation={handleBookCreation}
-        handleInputChange={handleInputChange}
+        onBookSubmit={handleBookSubmit}
+        onInputChange={handleInputChange}
         localBooksState={localBooksState}
       />
       <div className="book-lists">
         <h4>Welcome to your dashboard!</h4>
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-outline-success book-plus"
           data-toggle="modal"
           data-target="#form"
         >
-          Add Book
+          + Add New Book
         </button>
       </div>
-      <hr className="hr-styles"/>
-      <BookCards
-        books={props.books}
-        handleBookCreation={handleBookCreation}
-        handleInputChange={handleInputChange}
-        localStateBooks={localBooksState}
-        editDetails={editDetails}
-        clearFormData={clearFormData}
-        deleteBook={deleteBook}
-        setRequestData={setRequestData}
-      />
+      <hr className="hr-styles" />
+
+      {books && books.length > 0 ? (
+        <BookCards
+          books={books}
+          onBookSubmit={handleBookSubmit}
+          onInputChange={handleInputChange}
+          localStateBooks={localBooksState}
+          editDetails={editDetails}
+          clearFormData={clearFormData}
+          deleteBook={deleteBook}
+          setRequestData={setRequestData}
+        />
+      ) : (
+        <div className="book-empty">
+          <h4>Empty shelf! Click</h4>
+          <button
+            type="button"
+            className="btn btn-outline-success empty-button"
+            data-toggle="modal"
+            data-target="#form"
+          >
+            +
+          </button>
+          <h4> to start adding books</h4>
+        </div>
+      )}
       <footer className="footer-text">
-              <p>Copyright &copy; 2020. Harriet</p>
-          </footer>
+        <p>Copyright &copy; 2020. Harriet</p>
+      </footer>
     </Fragment>
   );
 };

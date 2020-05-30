@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { NotificationManager } from 'react-notifications';
 
 import InputField from "components/common/inputFields";
 import Button from "components/common/button";
@@ -35,6 +34,7 @@ class Login extends Component {
       dispatch(userActions.loginUser(email, password));
     }
     this.props.history.push("/dashboard");
+    window.location.reload(false);
   };
 
   render() {

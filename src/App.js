@@ -8,7 +8,6 @@ import Signup from "components/user/signup";
 import Login from "components/user/login";
 import Dashboard from "components/books";
 import PrivateRoute from "components/user/privateRoute";
-// import './App.css';
 
 function App() {
   return (

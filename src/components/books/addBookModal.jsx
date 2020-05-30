@@ -7,13 +7,12 @@ import "./index.scss";
 // import { API } from 'httpServices/authService';
 // import './home.scss';
 
-const AddBookModal = ({ localBooksState, handleInputChange, handleBookCreation }) => {
+const AddBookModal = ({ localBooksState, onInputChange, onBookSubmit }) => {
   const { title, isbn, author, formErrors } = localBooksState;
   const disableSubmitButton = title === "" || isbn === "" || author === "";
 
   return (
     <Fragment>
-
       <div
         class="modal fade"
         id="form"
@@ -26,7 +25,7 @@ const AddBookModal = ({ localBooksState, handleInputChange, handleBookCreation }
           <div class="modal-content">
             <div class="modal-header border-bottom-0">
               <h5 class="modal-title" id="exampleModalLabel">
-              Add Book
+                Add Book
               </h5>
               <button
                 type="button"
@@ -48,7 +47,7 @@ const AddBookModal = ({ localBooksState, handleInputChange, handleBookCreation }
                     type="text"
                     id="exampleInputText"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={onInputChange}
                   />
                   {formErrors.titleError.length > 0 && (
                     <div className="input-error">{`* ${formErrors.titleError}`}</div>
@@ -63,7 +62,7 @@ const AddBookModal = ({ localBooksState, handleInputChange, handleBookCreation }
                     type="text"
                     id="exampleInputText1"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={onInputChange}
                   />
                   {formErrors.isbnError.length > 0 && (
                     <div className="input-error">{`* ${formErrors.isbnError}`}</div>
@@ -79,7 +78,7 @@ const AddBookModal = ({ localBooksState, handleInputChange, handleBookCreation }
                     type="text"
                     id="exampleInputText2"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={onInputChange}
                   />
                   {formErrors.authorError.length > 0 && (
                     <div className="input-error">{`* ${formErrors.authorError}`}</div>
@@ -90,10 +89,9 @@ const AddBookModal = ({ localBooksState, handleInputChange, handleBookCreation }
                 <button
                   type="submit"
                   class="btn btn-success"
-                  onClick={handleBookCreation} 
+                  onClick={onBookSubmit}
                   data-dismiss="modal"
                   disabled={disableSubmitButton}
-                  
                 >
                   Add Book
                 </button>

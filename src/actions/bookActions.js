@@ -1,3 +1,5 @@
+import { NotificationManager } from 'react-notifications';
+
 import { bookConstants } from "../actions/actionTypes";
 import { userService } from "../services/userServices";
 import { history } from '../helpers';
@@ -24,9 +26,10 @@ function createBook(title, isbn, author) {
     };
     userService.post(apiEndpoint, payload).then((response) => {
       dispatch(createBookDetails());
+      NotificationManager.success('Book added Succesfully!', 'Successful!', 2000);
     }).catch((err)=>{
-      console.log(err);
-  })
+      NotificationManager.error('Book with ISBN already exists!', 'Error!');
+    })
   };
 }
 
@@ -37,9 +40,10 @@ function editBookInfo(id, payload){
       .then((response)=>{
         console.log('responseEditActions',response.data.data)
           dispatch(editBook(response.data.data));
-      }).catch((err)=>{
-        console.log(err);
-    })
+          NotificationManager.success('Book updated Succesfully!', 'Successful!', 2000);
+        }).catch((err)=>{
+          NotificationManager.error('Book with ISBN already exists!', 'Error!');
+        })
   }
 }
 
@@ -48,15 +52,13 @@ function deleteBook(id){
       let apiEndpoint = 'books/'+ id;
       userService.deleteDetail(apiEndpoint)
       .then((response)=>{
-           dispatch(deletebBookDetails(response.data.data));
-          //  dispatch(bookActions.fetchBooks());
-          // history.push('/dashboard')
+           dispatch(deletebBookDetails(response.data));
+           NotificationManager.success('Book deleted Succesfully!', 'Successful!', 2000);
       }).catch((err)=>{
-        console.log(err);
-    })
+        NotificationManager.error('Error  occured while deleting!', 'Error!');
+      })
   };
 }
-//Actions Creators
 
 export function bookLists(data){
   return{
