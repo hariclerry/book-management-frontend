@@ -1,11 +1,8 @@
 import React, { Fragment, useState } from "react";
 
 import InputField from "components/common/inputFields";
-import Button from "components/common/button";
 
 import "./index.scss";
-// import { API } from 'httpServices/authService';
-// import './home.scss';
 
 const AddBookModal = ({ localBooksState, onInputChange, onBookSubmit }) => {
   const { title, isbn, author, formErrors } = localBooksState;
