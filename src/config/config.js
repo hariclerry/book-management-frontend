@@ -1,3 +1,3 @@
 module.exports = {
-    baseUrl: 'http://localhost:8000/api/'
+    baseUrl: 'https://book-management-sys.herokuapp.com/api/'
 }
