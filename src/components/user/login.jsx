@@ -34,7 +34,7 @@ class Login extends Component {
       dispatch(userActions.loginUser(email, password));
     }
     this.props.history.push("/dashboard");
-    window.location.reload(false);
+    this.forceUpdate()
   };
 
   render() {

@@ -10,7 +10,7 @@ const Navigation = (props) => {
   const handleLogout = (event) => {
     const { dispatch } = props;
     dispatch(userActions.logout());
-    props.history.push('/')
+    props.history.push("/");
   };
 
   const { loggedIn } = props;
@@ -32,20 +32,20 @@ const Navigation = (props) => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {loggedIn && loggedIn === true ? (
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav mr-auto dashboard-nav">
               <li className="nav-item active">
                 <NavLink exact className="nav-link active" to="/dashboard">
                   Dashboard
                 </NavLink>
               </li>
-              <li className="nav-item" style={{ paddingLeft: "1100px" }}>
-                <button style={{ background: "#343a40",border:"none" }} onClick={() => handleLogout()}>
-                <NavLink
-                  className="nav-link"
-                  to="/logout"
+              <li className="nav-item">
+                <button
+                  style={{ background: "#343a40", border: "none" }}
+                  onClick={() => handleLogout()}
                 >
-                  Logout
-                </NavLink>
+                  <NavLink className="nav-link" to="/logout">
+                    Logout
+                  </NavLink>
                 </button>
               </li>
             </ul>
