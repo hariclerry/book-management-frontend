@@ -1,0 +1,83 @@
+.card-books {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding: 50px 20px 0 20px;
+}
+
+.card {
+  width: 18rem;
+  margin: 0 10px 20px 0;
+  align-items: center;
+}
+
+.book-lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 110px 30px 20px 30px;
+  color: rgb(70, 68, 68);
+  font-size: 0.8em;
+  font-family: arial;
+  font-weight: 600;
+}
+
+hr.hr-styles {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+.isbn-text {
+  color: grey;
+  font-size: 0.8em;
+  font-style: oblique;
+}
+
+.card-body {
+  text-align: center;
+  font-family: arial;
+}
+
+.book-card-author {
+  color: #494848;
+  font-size: 1.2em;
+}
+
+.book-card-title {
+  font-family: sans-serif;
+  color: #3d3c3c;
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.card-buttons button {
+  margin: 15px;
+  flex-grow: 1;
+  align-self: flex-end;
+}
+.book-plus.btn {
+  font-weight: 500;
+  font-size: 1.2em;
+}
+.book-empty {
+  font-family: sans-serif;
+  color: #3d3c3c;
+  font-weight: 500;
+  font-size: 5em;
+  height: 400px;
+  opacity: 0.8;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.empty-button {
+  width: 60px;
+  height: 40px;
+}
