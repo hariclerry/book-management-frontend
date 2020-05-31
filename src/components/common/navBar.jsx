@@ -10,7 +10,7 @@ const Navigation = (props) => {
   const handleLogout = (event) => {
     const { dispatch } = props;
     dispatch(userActions.logout());
-    props.history.push('/login')
+    props.history.push('/')
   };
 
   const { loggedIn } = props;

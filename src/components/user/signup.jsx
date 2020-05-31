@@ -101,7 +101,7 @@ class Signup extends Component {
               type="submit"
               value="Submit"
               disabled={disableSubmitButton}
-              className="btn btn-primary size-button"
+              className="btn btn-success size-button"
             />
             <p className="lead-account">
               Have already an account? {''}

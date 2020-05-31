@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
 
@@ -12,6 +12,7 @@ import PrivateRoute from "components/user/privateRoute";
 function App() {
   return (
     <Fragment>
+       <BrowserRouter>
       <Switch>
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/" component={Home} />
       </Switch>
       <NotificationContainer />
+      </BrowserRouter>
     </Fragment>
   );
 }

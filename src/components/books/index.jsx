@@ -58,8 +58,8 @@ const Dashboard = (props) => {
         dispatch(bookActions.editBookInfo(id, updatedDetails));
       }
     }
-    clearFormData()
-    fetchAllBooks();
+    clearFormData();
+    window.location.reload(false);
   };
 
   const editDetails = (data) => {
