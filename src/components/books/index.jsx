@@ -25,7 +25,7 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     fetchAllBooks();
-  }, [requestData]);
+  }, []);
 
   const fetchAllBooks = async () => {
     const { dispatch } = props;
