@@ -1,4 +1,3 @@
-import jwt from 'jwt-decode' 
 import { userConstants } from 'actions/actionTypes';
 
 let token = localStorage.getItem('token');

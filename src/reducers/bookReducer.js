@@ -8,11 +8,12 @@ export default function books(state = initialState, action) {
   switch (action.type) {
     case bookConstants.REGISTER_BOOK_SUCCESS:    
     return {
-      ...state
+      ...state.books,
+      books: action.payload
   };
       case bookConstants.FETCH_BOOK_SUCCESS:
         return {
-            ...state,
+            ...state.books,
             books: action.payload
         };
         case bookConstants.EDIT_BOOK_SUCCESS:
