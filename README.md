@@ -13,7 +13,7 @@ With Book Management APP you can:
 * Delete a book
 
 ### Requirements
-* Node v10.0.0
+* Node v12.0.0
 * React.js framework
 
 ### Installation
@@ -31,9 +31,8 @@ With Book Management APP you can:
 
 5. Testing
 
-* TODO
 ```npm run test``` 
 
 ### Checkout the live app on heroku
-TODO
+http://book-management-app-frontend.herokuapp.com/
 
