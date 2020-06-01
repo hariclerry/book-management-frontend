@@ -2,7 +2,6 @@ import { NotificationManager } from 'react-notifications';
 
 import { bookConstants } from "../actions/actionTypes";
 import { userService } from "../services/userServices";
-import { history } from '../helpers';
 
 function fetchBooks(){
   return dispatch => {
@@ -25,7 +24,7 @@ function createBook(title, isbn, author) {
       author: author,
     };
     userService.post(apiEndpoint, payload).then((response) => {
-      dispatch(createBookDetails());
+      dispatch(createBookDetails(response.data.data));
       NotificationManager.success('Book added Succesfully!', 'Successful!', 2000);
     }).catch((err)=>{
       NotificationManager.error('Book with ISBN already exists!', 'Error!');
@@ -38,7 +37,6 @@ function editBookInfo(id, payload){
       let apiEndpoint = 'books/'+ id;
       userService.put(apiEndpoint, payload)
       .then((response)=>{
-        console.log('responseEditActions',response.data.data)
           dispatch(editBook(response.data.data));
           NotificationManager.success('Book updated Succesfully!', 'Successful!', 2000);
         }).catch((err)=>{
@@ -69,7 +67,8 @@ export function bookLists(data){
 
 export function createBookDetails(data) {
   return {
-    type: bookConstants.REGISTER_BOOK_SUCCESS
+    type: bookConstants.REGISTER_BOOK_SUCCESS,
+    payload: data
   };
 }
 

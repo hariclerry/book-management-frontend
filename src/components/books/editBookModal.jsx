@@ -14,30 +14,30 @@ const EditBookModal = ({
   return (
     <Fragment>
       <div
-        class="modal fade"
+        className="modal fade"
         id="exampleModal"
         tabindex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
                 Edit Book
               </h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <div className="form-main">
+            <div className="modal-body">
+              <div className="form-main modal-edit">
                 <form className="flex-form">
                   <div className="form-group">
                     <InputField
@@ -85,10 +85,10 @@ const EditBookModal = ({
                       <div className="input-error">{`* ${formErrors.authorError}`}</div>
                     )}
                   </div>
-                  <div class="modal-footer">
+                  <div className="modal-footer">
                     <button
                       type="button"
-                      class="btn btn-secondary"
+                      className="btn btn-secondary"
                       data-dismiss="modal"
                       onClick={clearFormData}
                     >
@@ -96,7 +96,7 @@ const EditBookModal = ({
                     </button>
                     <button
                       type="submit"
-                      class="btn btn-primary"
+                      className="btn btn-success"
                       data-dismiss="modal"
                       onClick={onBookSubmit}
                       disabled={disableSubmitButton}

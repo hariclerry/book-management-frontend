@@ -10,16 +10,16 @@ const Navigation = (props) => {
   const handleLogout = (event) => {
     const { dispatch } = props;
     dispatch(userActions.logout());
-    props.history.push('/login')
+    props.history.push("/");
   };
 
   const { loggedIn } = props;
   return (
     <Fragment>
-      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
         <h3 className="masthead-brand logo-size">BMA</h3>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -27,41 +27,41 @@ const Navigation = (props) => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {loggedIn && loggedIn === true ? (
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
+            <ul className="navbar-nav mr-auto dashboard-nav">
+              <li className="nav-item active">
                 <NavLink exact className="nav-link active" to="/dashboard">
                   Dashboard
                 </NavLink>
               </li>
-              <li class="nav-item" style={{ paddingLeft: "1100px" }}>
-                <button style={{ background: "#343a40",border:"none" }} onClick={() => handleLogout()}>
-                <NavLink
-                  className="nav-link"
-                  to="/logout"
+              <li className="nav-item">
+                <button
+                  style={{ background: "#343a40", border: "none" }}
+                  onClick={() => handleLogout()}
                 >
-                  Logout
-                </NavLink>
+                  <NavLink className="nav-link" to="/logout">
+                    Logout
+                  </NavLink>
                 </button>
               </li>
             </ul>
           ) : (
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item active">
                 <NavLink exact className="nav-link active" to="/">
                   Home
                 </NavLink>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/signup">
                   Signup
                 </NavLink>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/login">
                   Login
                 </NavLink>

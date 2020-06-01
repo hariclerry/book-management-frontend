@@ -7,7 +7,6 @@ import AddBookModal from "components/books/addBookModal";
 import BookCards from "components/books/cardLists";
 import { bookActions } from "actions/bookActions";
 import { validate } from "helpers/validate";
-import Shelf from "../../images/bookk.jpg";
 import "./index.scss";
 
 const Dashboard = (props) => {
@@ -25,12 +24,13 @@ const Dashboard = (props) => {
   const [requestData, setRequestData] = useState(new Date());
 
   useEffect(() => {
-    const fetchAllBooks = async () => {
-      const { dispatch } = props;
-      await dispatch(bookActions.fetchBooks());
-    };
     fetchAllBooks();
-  }, [requestData]);
+  }, []);
+
+  const fetchAllBooks = async () => {
+    const { dispatch } = props;
+    await dispatch(bookActions.fetchBooks());
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

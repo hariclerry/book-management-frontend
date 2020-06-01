@@ -6,7 +6,7 @@ import { history } from '../helpers';
 
 function createUser(userName, email, password) {
   return (dispatch) => {
-    let apiEndpoint = "books";
+    let apiEndpoint = "user";
     let payload = {
       userName: userName,
       email: email,

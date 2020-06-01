@@ -34,7 +34,6 @@ class Login extends Component {
       dispatch(userActions.loginUser(email, password));
     }
     this.props.history.push("/dashboard");
-    window.location.reload(false);
   };
 
   render() {
@@ -44,7 +43,7 @@ class Login extends Component {
       <Fragment>
         <Navigation />
         <div className="form-main">
-          <form className="flex-form" onSubmit={this.handleLogin}>
+          <form className="flex-form">
             <h2 className="form-group account-text">Login</h2>
 
             <div className="form-group">
@@ -84,7 +83,8 @@ class Login extends Component {
               type="submit"
               value="Submit"
               disabled={disableSubmitButton}
-              className="btn btn-primary size-button"
+              className="btn btn-success size-button"
+              onClick={this.handleLogin}
             />
             <p className="lead-account">
               Haven't yet created an account? {""}

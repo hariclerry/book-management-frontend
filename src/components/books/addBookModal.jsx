@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
 import InputField from "components/common/inputFields";
 
@@ -7,26 +7,25 @@ import "./index.scss";
 const AddBookModal = ({ localBooksState, onInputChange, onBookSubmit }) => {
   const { title, isbn, author, formErrors } = localBooksState;
   const disableSubmitButton = title === "" || isbn === "" || author === "";
-
   return (
     <Fragment>
       <div
-        class="modal fade"
+        className="modal fade"
         id="form"
         tabindex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <h5 class="modal-title" id="exampleModalLabel">
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header border-bottom-0">
+              <h5 className="modal-title" id="exampleModalLabel">
                 Add Book
               </h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
@@ -34,7 +33,7 @@ const AddBookModal = ({ localBooksState, onInputChange, onBookSubmit }) => {
               </button>
             </div>
             <form>
-              <div class="modal-body">
+              <div className="modal-body">
                 <div className="form-group">
                   <InputField
                     htmlFor="exampleInputText"
@@ -82,10 +81,10 @@ const AddBookModal = ({ localBooksState, onInputChange, onBookSubmit }) => {
                   )}
                 </div>
               </div>
-              <div class="modal-footer border-top-0 d-flex justify-content-center">
+              <div className="modal-footer border-top-0 d-flex justify-content-center">
                 <button
                   type="submit"
-                  class="btn btn-success"
+                  className="btn btn-success"
                   onClick={onBookSubmit}
                   data-dismiss="modal"
                   disabled={disableSubmitButton}
