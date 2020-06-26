@@ -34,8 +34,8 @@ const BookCards = ({
               <div class="card">
                 <img src={Shelf} class="card-img-top" alt="book" />
                 <div class="card-body">
-                  <h4 id={book._id} class="card-title book-card-title">{book.title}</h4>
-                  <div id={book._id} class="card-text">
+                  <h4 class="card-title book-card-title">{book.title}</h4>
+                  <div key={book._id} class="card-text">
                     <p className="isbn-text">by</p>
                     <p className="book-card-author">{book.author}</p>
                     <p className="isbn-text">ISBN {book.isbn}</p>

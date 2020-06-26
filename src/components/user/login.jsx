@@ -31,9 +31,8 @@ class Login extends Component {
     const { email, password } = this.state;
     const { dispatch } = this.props;
     if (email && password) {
-      dispatch(userActions.loginUser(email, password));
+      dispatch(userActions.loginUser(email, password, this.props.history));
     }
-    this.props.history.push("/dashboard");
   };
 
   render() {

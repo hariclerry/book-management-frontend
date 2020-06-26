@@ -21,7 +21,7 @@ function createUser(userName, email, password) {
   };
 }
 
-function loginUser(email, password) {
+function loginUser(email, password, history) {
   return (dispatch) => {
     let apiEndpoint = "user/login";
     let payload = {
