@@ -17,7 +17,6 @@ function validateRegistration(name, formErrors, value) {
 }
 
 function validateBook(name, formErrors, value) {
-  const isbnPattern = /^([0-9]*-[0-9]*){2,4}$/g;
   switch (name) {
     case "title":
       formErrors.titleError =
@@ -25,8 +24,8 @@ function validateBook(name, formErrors, value) {
       break;
     case "isbn":
       formErrors.isbnError =
-        !isbnPattern.test(value) && value.length < 8
-          ? "Isbn must be valid & atleast 8 characters long, E.g 100-877-66"
+         value.length < 8
+          ? "Isbn must be numbers & atleast 8 characters long, E.g 100-877-66"
           : "";
       break;
     case "author":

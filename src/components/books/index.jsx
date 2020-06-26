@@ -49,17 +49,11 @@ const Dashboard = (props) => {
       }
     } else if (title && isbn && author && id) {
       const id = localBooksState.id;
-      const updatedDetails = {
-        title: title,
-        isbn: isbn,
-        author: author,
-      };
       if (title && isbn && author) {
-        dispatch(bookActions.editBookInfo(id, updatedDetails));
+        dispatch(bookActions.editBookInfo(id, title, isbn, author));
       }
     }
     clearFormData();
-    window.location.reload(false);
   };
 
   const editDetails = (data) => {

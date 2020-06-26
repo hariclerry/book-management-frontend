@@ -24,7 +24,7 @@ function createBook(title, isbn, author) {
       author: author,
     };
     userService.post(apiEndpoint, payload).then((response) => {
-      dispatch(createBookDetails(response.data.data));
+      dispatch(createBookDetails(response.data.data))
       NotificationManager.success('Book added Succesfully!', 'Successful!', 2000);
     }).catch((err)=>{
       NotificationManager.error('Book with ISBN already exists!', 'Error!');
@@ -32,9 +32,14 @@ function createBook(title, isbn, author) {
   };
 }
 
-function editBookInfo(id, payload){
+function editBookInfo(id, title, isbn, author){
   return dispatch => {
       let apiEndpoint = 'books/'+ id;
+      let payload = {
+        title: title,
+        isbn: isbn,
+        author: author,
+      };
       userService.put(apiEndpoint, payload)
       .then((response)=>{
           dispatch(editBook(response.data.data));
@@ -50,7 +55,7 @@ function deleteBook(id){
       let apiEndpoint = 'books/'+ id;
       userService.deleteDetail(apiEndpoint)
       .then((response)=>{
-           dispatch(deletebBookDetails(response.data));
+           dispatch(deletebBookDetails(id));
            NotificationManager.success('Book deleted Succesfully!', 'Successful!', 2000);
       }).catch((err)=>{
         NotificationManager.error('Error  occured while deleting!', 'Error!');
