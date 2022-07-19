@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 
 import InputField from "components/common/inputFields";
 import Button from "components/common/button";
-import Navigation from "components/common/navBar";
 import { userActions } from "actions/userActions";
 import { validate } from "helpers/validate";
 import "./index.scss";
@@ -35,17 +33,17 @@ class Signup extends Component {
     if (userName && email && password) {
       dispatch(userActions.createUser(userName, email, password));
     }
-    this.props.history.push("/login");
+    this.props.onToggleForm(true)
   };
 
   render() {
     const { userName, email, password, formErrors } = this.state;
+    const { onToggleForm } = this.props;
     const disableSubmitButton =
       userName === "" || email === "" || password === "";
     return (
       <Fragment>
-        <Navigation />
-        <div className="form-main">
+        <div className="form-main-register">
           <form className="flex-form" onSubmit={this.handleRegistration}>
             <h2 className="form-group account-text">Create Account</h2>
             <div className="form-group">
@@ -105,15 +103,15 @@ class Signup extends Component {
             />
             <p className="lead-account">
               Have already an account? {''}
-              <NavLink className="link-account" to="/login">
-               Login Here 
-              </NavLink>
+              <button className="link-account" onClick={() => onToggleForm(true)}>
+                Login Here
+              </button>
             </p>
           </form>
-        </div>
-        <footer className="footer-text">
-              <p>Copyright &copy; 2020. Harriet</p>
+          <footer className="footer-text">
+            <p>Copyright &copy; {new Date().getFullYear()}. Harriet</p>
           </footer>
+        </div>
       </Fragment>
     );
   }

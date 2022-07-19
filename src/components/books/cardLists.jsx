@@ -31,10 +31,12 @@ const BookCards = ({
         {books &&
           books.map((book) => {
             return (
-              <div class="card">
-                <img src={Shelf} class="card-img-top" alt="book" />
-                <div class="card-body">
-                  <h4 class="card-title book-card-title">{book.title}</h4>
+              <div className="card">
+                <div className="book-card-img">
+                  <img src={book.imageUrl || Shelf} class="card-img-top" alt="book" />
+                </div>
+                <div className="card-body">
+                  <h4 className="card-title book-card-title">{book.title}</h4>
                   <div key={book._id} class="card-text">
                     <p className="isbn-text">by</p>
                     <p className="book-card-author">{book.author}</p>
@@ -43,7 +45,7 @@ const BookCards = ({
                   <div id={book._id} className="card-buttons">
                     <button
                       type="button"
-                      class="btn btn-success"
+                      className="btn btn-success"
                       data-toggle="modal"
                       data-target="#exampleModal"
                       onClick={(e) => editDetails(book, e)}
@@ -52,7 +54,7 @@ const BookCards = ({
                     </button>
                     <button
                       type="button"
-                      class="btn btn-danger"
+                      className="btn btn-danger"
                       data-toggle="modal"
                       data-target="#exampleModalCenter"
                       onClick={(e) => editDetails(book, e)}

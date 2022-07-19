@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { userActions } from "actions/userActions";
+import { isLogin } from "../../helpers/auth";
 import "../user/home.scss";
 
 const Navigation = (props) => {
@@ -13,7 +14,7 @@ const Navigation = (props) => {
     props.history.push("/");
   };
 
-  const { loggedIn } = props;
+  const { onToggleForm } = props;
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -31,7 +32,7 @@ const Navigation = (props) => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          {loggedIn && loggedIn === true ? (
+          {isLogin() === true ? (
             <ul className="navbar-nav mr-auto dashboard-nav">
               <li className="nav-item active">
                 <NavLink exact className="nav-link active" to="/dashboard">
@@ -51,18 +52,13 @@ const Navigation = (props) => {
             </ul>
           ) : (
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <NavLink exact className="nav-link active" to="/">
-                  Home
-                </NavLink>
-              </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/signup">
+                <NavLink className="nav-link" to="" onClick={() => onToggleForm(false)}>
                   Signup
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/login">
+                <NavLink className="nav-link" to="" onClick={() => onToggleForm(true)}>
                   Login
                 </NavLink>
               </li>

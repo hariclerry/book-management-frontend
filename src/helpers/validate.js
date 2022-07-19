@@ -24,8 +24,8 @@ function validateBook(name, formErrors, value) {
       break;
     case "isbn":
       formErrors.isbnError =
-         value.length < 8
-          ? "Isbn must be numbers & atleast 8 characters long, E.g 100-877-66"
+        value.length < 4
+          ? "Isbn must be numbers & atleast 4 characters long, E.g 100-877"
           : "";
       break;
     case "author":

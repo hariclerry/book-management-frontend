@@ -1,28 +1,35 @@
-import React, { Fragment } from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import React, { Fragment, useState } from "react";
+import { Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router";
+import { connect } from "react-redux";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
 
-import Home from "components/user/home";
-import Signup from "components/user/signup";
-import Login from "components/user/login";
+import UserAuth from "components/user";
 import Dashboard from "components/books";
 import PrivateRoute from "components/user/privateRoute";
 
 function App() {
+
+  const [toggleForm, setToggleForm] = useState(false)
+
+  const handleToggleForm = (value) => {
+    setToggleForm(value)
+  }
+
   return (
     <Fragment>
-       <BrowserRouter>
       <Switch>
-        <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/" component={Home} />
+        <PrivateRoute path="/dashboard">
+          <Dashboard />
+        </PrivateRoute>
+        <Route exact path="/" component={() => <UserAuth onToggleForm={handleToggleForm} toggleForm={toggleForm} />} />
       </Switch>
       <NotificationContainer />
-      </BrowserRouter>
     </Fragment>
   );
 }
 
-export default App;
+export default withRouter(connect(null, null, null, {
+  pure: false,
+})(App));

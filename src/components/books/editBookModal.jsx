@@ -21,7 +21,7 @@ const EditBookModal = ({
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
@@ -37,74 +37,70 @@ const EditBookModal = ({
               </button>
             </div>
             <div className="modal-body">
-              <div className="form-main modal-edit">
-                <form className="flex-form">
-                  <div className="form-group">
-                    <InputField
-                      htmlFor="exampleInputText"
-                      label="Title"
-                      value={title}
-                      name="title"
-                      type="text"
-                      id="exampleInputText"
-                      className="form-control"
-                      onChange={onInputChange}
-                    />
-                    {formErrors.titleError.length > 0 && (
-                      <div className="input-error">{`* ${formErrors.titleError}`}</div>
-                    )}
-                  </div>
-                  <div className="form-group">
-                    <InputField
-                      htmlFor="exampleInputText1"
-                      label="Isbn"
-                      value={isbn}
-                      name="isbn"
-                      type="text"
-                      id="exampleInputText1"
-                      className="form-control"
-                      onChange={onInputChange}
-                    />
-                    {formErrors.isbnError.length > 0 && (
-                      <div className="input-error">{`* ${formErrors.isbnError}`}</div>
-                    )}
-                  </div>
+              <div className="form-group">
+                <InputField
+                  htmlFor="exampleInputText"
+                  label="Title"
+                  value={title}
+                  name="title"
+                  type="text"
+                  id="exampleInputText"
+                  className="form-control"
+                  onChange={onInputChange}
+                />
+                {formErrors.titleError.length > 0 && (
+                  <div className="input-error">{`* ${formErrors.titleError}`}</div>
+                )}
+              </div>
+              <div className="form-group">
+                <InputField
+                  htmlFor="exampleInputText1"
+                  label="Isbn"
+                  value={isbn}
+                  name="isbn"
+                  type="text"
+                  id="exampleInputText1"
+                  className="form-control"
+                  onChange={onInputChange}
+                />
+                {formErrors.isbnError.length > 0 && (
+                  <div className="input-error">{`* ${formErrors.isbnError}`}</div>
+                )}
+              </div>
 
-                  <div className="form-group">
-                    <InputField
-                      htmlFor="exampleInputText2"
-                      label="Author"
-                      value={author}
-                      name="author"
-                      type="text"
-                      id="exampleInputText2"
-                      className="form-control"
-                      onChange={onInputChange}
-                    />
-                    {formErrors.authorError.length > 0 && (
-                      <div className="input-error">{`* ${formErrors.authorError}`}</div>
-                    )}
-                  </div>
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      data-dismiss="modal"
-                      onClick={clearFormData}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className="btn btn-success"
-                      data-dismiss="modal"
-                      onClick={onBookSubmit}
-                      disabled={disableSubmitButton}
-                    >
-                      Save changes
-                    </button>
-                  </div>
-                </form>
+              <div className="form-group">
+                <InputField
+                  htmlFor="exampleInputText2"
+                  label="Author"
+                  value={author}
+                  name="author"
+                  type="text"
+                  id="exampleInputText2"
+                  className="form-control"
+                  onChange={onInputChange}
+                />
+                {formErrors.authorError.length > 0 && (
+                  <div className="input-error">{`* ${formErrors.authorError}`}</div>
+                )}
+              </div>
+              <div className="modal-footer border-top-0">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  onClick={clearFormData}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="btn btn-success"
+                  data-dismiss="modal"
+                  onClick={onBookSubmit}
+                  disabled={disableSubmitButton}
+                >
+                  Save changes
+                </button>
               </div>
             </div>
           </div>

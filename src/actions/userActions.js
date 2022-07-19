@@ -15,13 +15,13 @@ function createUser(userName, email, password) {
     userService.post(apiEndpoint, payload).then((response) => {
       dispatch(creatUserDetails());
       NotificationManager.success('Registration Succesful!', 'Successful!', 2000);
-    }).catch((err)=>{
+    }).catch((err) => {
       NotificationManager.error('User Email already exists!', 'Error!');
-  })
+    })
   };
 }
 
-function loginUser(email, password, history) {
+function loginUser(email, password) {
   return (dispatch) => {
     let apiEndpoint = "user/login";
     let payload = {
@@ -29,21 +29,18 @@ function loginUser(email, password, history) {
       password: password,
     };
     userService.post(apiEndpoint, payload).then((response) => {
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-        dispatch(userDetails(response.data));
-        history.push('/dashboard')
-        NotificationManager.success('Login Succesful!', 'Successful!', 2000);
-      }
-    }).catch((err)=>{
+      localStorage.setItem("my-token", response.data.token);
+      dispatch(userDetails(response.data));
+      NotificationManager.success('Login Succesful!', 'Successful!', 2000);
+    }).catch((err) => {
       NotificationManager.error('Wrong Email address or password!', 'Error!');
-  })
+    })
   };
 }
 
 function logout() {
   return (dispatch) => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("my-token");
     dispatch(logoutUser());
     history.push('/')
   };

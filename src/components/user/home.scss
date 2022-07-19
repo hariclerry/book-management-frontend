@@ -32,7 +32,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   background-image: url("../../images/book-shelves.jpg");
-  background-color: rgba(17, 182, 34, 0.5);
+  background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh !important;
@@ -46,9 +46,9 @@ body {
 }
 
 .dashboard-nav {
-display: flex;
-justify-content: space-between;
-width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
 }
 
 .masthead {
@@ -89,7 +89,11 @@ width: 80vw;
 }
 
 .cover {
-  padding: 0 1.5rem;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  color: #dfdcdc;
+  padding: 1.5rem;
 }
 .cover .btn-lg {
   padding: 0.75rem 1.25rem;

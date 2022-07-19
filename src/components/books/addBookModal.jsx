@@ -4,9 +4,9 @@ import InputField from "components/common/inputFields";
 
 import "./index.scss";
 
-const AddBookModal = ({ localBooksState, onInputChange, onBookSubmit }) => {
+const AddBookModal = ({ localBooksState, onInputChange, onBookSubmit, onFileChange, file }) => {
   const { title, isbn, author, formErrors } = localBooksState;
-  const disableSubmitButton = title === "" || isbn === "" || author === "";
+  const disableSubmitButton = title === "" || isbn === "" || author === "" || file === "";
   return (
     <Fragment>
       <div
@@ -80,6 +80,8 @@ const AddBookModal = ({ localBooksState, onInputChange, onBookSubmit }) => {
                     <div className="input-error">{`* ${formErrors.authorError}`}</div>
                   )}
                 </div>
+                <input type='file' name='file' accept="image/png, image/jpeg, image/jpg" onChange={onFileChange}></input>
+                <span className="input-error">{!file && '*Image is required'}</span>
               </div>
               <div className="modal-footer border-top-0 d-flex justify-content-center">
                 <button

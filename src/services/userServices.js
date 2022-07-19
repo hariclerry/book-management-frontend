@@ -48,10 +48,10 @@ function deleteDetail(apiEndpoint) {
     });
 }
 
-function getOptions(){
+function getOptions() {
   let options = {};
-  if(localStorage.getItem('token')){
-      options.headers = { 'x-auth-token': localStorage.getItem('token') };
+  if (localStorage.getItem('my-token')) {
+    options.headers = { 'x-auth-token': localStorage.getItem('my-token') };
   }
   return options;
 }

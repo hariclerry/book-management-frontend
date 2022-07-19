@@ -22,6 +22,7 @@ const Dashboard = (props) => {
   };
   const [localBooksState, setBooks] = useState(initialFormState);
   const [requestData, setRequestData] = useState(new Date());
+  const [file, setFile] = useState("");
 
   useEffect(() => {
     fetchAllBooks();
@@ -39,13 +40,20 @@ const Dashboard = (props) => {
     setBooks({ ...localBooksState, formErrors, [name]: value });
   };
 
+  const handleFileChange = (event) => {
+    event.preventDefault();
+    const files = event.target.files;
+    if (!files) return;
+    setFile(files[0]);
+  };
   const handleBookSubmit = (event) => {
     event.preventDefault();
     const { title, isbn, author, id } = localBooksState;
     const { dispatch } = props;
     if (title && isbn && author && !id) {
-      if (title && isbn && author) {
-        dispatch(bookActions.createBook(title, isbn, author));
+      if (title && isbn && author && file.name) {
+        dispatch(bookActions.createBook(title, isbn, author, file));
+        setFile("");
       }
     } else if (title && isbn && author && id) {
       const id = localBooksState.id;
@@ -91,55 +99,58 @@ const Dashboard = (props) => {
     setRequestData(new Date());
   };
   const { books } = props;
+
   return (
     <Fragment>
       <Navigation />
-      <AddBookModal
-        onBookSubmit={handleBookSubmit}
-        onInputChange={handleInputChange}
-        localBooksState={localBooksState}
-      />
-      <div className="book-lists">
-        <h4>Welcome to your dashboard!</h4>
-        <button
-          type="button"
-          className="btn btn-outline-success book-plus"
-          data-toggle="modal"
-          data-target="#form"
-        >
-          + Add New Book
-        </button>
-      </div>
-      <hr className="hr-styles" />
-
-      {books && books.length > 0 ? (
-        <BookCards
-          books={books}
+      <div className="book-main">
+        <AddBookModal
           onBookSubmit={handleBookSubmit}
           onInputChange={handleInputChange}
-          localStateBooks={localBooksState}
-          editDetails={editDetails}
-          clearFormData={clearFormData}
-          deleteBook={deleteBook}
-          setRequestData={setRequestData}
+          localBooksState={localBooksState}
+          onFileChange={handleFileChange}
+          file={file}
         />
-      ) : (
-        <div className="book-empty">
-          <h4>Empty shelf! Click</h4>
+        <div className="book-lists">
+          <h4>My Book Shelf</h4>
           <button
             type="button"
-            className="btn btn-outline-success empty-button"
+            className="btn btn-outline-success book-plus"
             data-toggle="modal"
             data-target="#form"
           >
-            +
+            + Add New Book
           </button>
-          <h4> to start adding books</h4>
         </div>
-      )}
-      <footer className="footer-text">
-        <p>Copyright &copy; 2020. Harriet</p>
-      </footer>
+        <hr className="hr-styles" />
+        {books && books.length > 0 ? (
+          <BookCards
+            books={books}
+            onBookSubmit={handleBookSubmit}
+            onInputChange={handleInputChange}
+            localStateBooks={localBooksState}
+            editDetails={editDetails}
+            clearFormData={clearFormData}
+            deleteBook={deleteBook}
+            setRequestData={setRequestData}
+          />
+        ) : (
+          <div className="book-empty">
+            <h4>Empty shelf</h4>
+            <button
+              type="button"
+              className="btn btn-outline-success empty-button"
+              data-toggle="modal"
+              data-target="#form"
+            >
+              +
+            </button>
+          </div>
+        )}
+        <footer className="footer-dashboard">
+          <p>Copyright &copy; {new Date().getFullYear()} Harriet</p>
+        </footer>
+      </div>
     </Fragment>
   );
 };

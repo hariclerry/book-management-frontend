@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router";
 
 import InputField from "components/common/inputFields";
 import Button from "components/common/button";
-import Navigation from "components/common/navBar";
 import { userActions } from "actions/userActions";
 import { validate } from "helpers/validate";
 import "./index.scss";
@@ -26,22 +25,24 @@ class Login extends Component {
     this.setState({ ...this.state, formErrors, [name]: value });
   };
 
+
   handleLogin = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
     const { dispatch } = this.props;
     if (email && password) {
       dispatch(userActions.loginUser(email, password, this.props.history));
+      this.props.history.push('/dashboard')
     }
   };
 
   render() {
     const { email, password, formErrors } = this.state;
+    const { onToggleForm } = this.props
     const disableSubmitButton = email === "" || password === "";
     return (
       <Fragment>
-        <Navigation />
-        <div className="form-main">
+        <div className="form-main-register">
           <form className="flex-form">
             <h2 className="form-group account-text">Login</h2>
 
@@ -87,16 +88,15 @@ class Login extends Component {
             />
             <p className="lead-account">
               Haven't yet created an account? {""}
-              <NavLink className="link-account" to="/signup">
+              <button className="link-account" onClick={() => onToggleForm(false)}>
                 Signup Here
-              </NavLink>
+              </button>
             </p>
           </form>
-        </div>
-
-        <footer className="footer-text">
-              <p>Copyright &copy; 2020. Harriet</p>
+          <footer className="footer-text">
+            <p>Copyright &copy; {new Date().getFullYear()}. Harriet</p>
           </footer>
+        </div>
       </Fragment>
     );
   }
@@ -109,6 +109,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, null, null, {
+export default withRouter(connect(mapStateToProps, null, null, {
   pure: false,
-})(Login);
+})(Login));

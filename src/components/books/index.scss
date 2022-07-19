@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding: 50px 20px 0 20px;
+  padding: 50px 20px 30px 20px;
 }
 
 .card {
@@ -24,6 +24,7 @@
 
 hr.hr-styles {
   height: 10px;
+  width: 100%;
   border: 0;
   box-shadow: 0 10px 10px -10px #8c8b8b inset;
 }
@@ -86,4 +87,17 @@ hr.hr-styles {
   box-shadow: none;
   margin: 0;
   padding: 0;
+}
+
+.modal-body {
+  .form-group {
+    width: inherit;
+  }
+}
+
+.book-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
 }
