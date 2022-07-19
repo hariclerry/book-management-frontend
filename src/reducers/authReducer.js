@@ -1,8 +1,5 @@
 import { userConstants } from "actions/actionTypes";
 
-// let token = localStorage.getItem("my-token");
-// const isLoggedIn = token ? true : false;
-
 const initialState = {};
 
 export default function authentication(state = initialState, action) {
